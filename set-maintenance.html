@@ -15,7 +15,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="publish" href="publish.html" />
+    <link rel="prev" title="push" href="push.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -40,12 +40,12 @@
 <p>When a repository is in maintenance mode, publishing onto customer-
 visible locations should be forbidden.</p>
 </p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">pubtools</span><span class="o">-</span><span class="n">pulp</span><span class="o">-</span><span class="n">maintenance</span><span class="o">-</span><span class="n">on</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">url</span> <span class="n">PULP_URL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">pubtools</span><span class="o">-</span><span class="n">pulp</span><span class="o">-</span><span class="n">maintenance</span><span class="o">-</span><span class="n">on</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">url</span> <span class="n">PULP_URL</span><span class="p">]</span>
                                     <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">user</span> <span class="n">PULP_USER</span><span class="p">]</span>
                                     <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">password</span> <span class="n">PULP_PASSWORD</span><span class="p">]</span>
                                     <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">insecure</span><span class="p">]</span>
                                     <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">throttle</span> <span class="n">PULP_THROTTLE</span><span class="p">]</span>
-                                    <span class="p">[</span><span class="o">--</span><span class="n">owner</span> <span class="n">OWNER</span><span class="p">]</span>
+                                    <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">fake</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">owner</span> <span class="n">OWNER</span><span class="p">]</span>
                                     <span class="p">[</span><span class="o">--</span><span class="n">repo</span><span class="o">-</span><span class="n">url</span><span class="o">-</span><span class="n">regex</span> <span class="n">REPO_URL_REGEX</span><span class="p">]</span>
                                     <span class="p">[</span><span class="o">--</span><span class="n">repo</span><span class="o">-</span><span class="n">ids</span> <span class="n">REPO_IDS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">message</span> <span class="n">MESSAGE</span><span class="p">]</span>
 </pre></div>
@@ -88,7 +88,11 @@ visible locations should be forbidden.</p>
 <p>Default: False</p>
 </dd>
 <dt><kbd>--pulp-throttle</kbd></dt>
-<dd><p>Allows to enqueue or run only specified number of Pulp tasks at one moment</p>
+<dd><p>Allows to enqueue or run only specified number of Pulp tasks at one moment (or set PULP_THROTTLE environment variable)</p>
+</dd>
+<dt><kbd>--pulp-fake</kbd></dt>
+<dd><p>Use a fake in-memory Pulp client rather than interacting with a real server. For development/testing only, may have limited functionality.</p>
+<p>Default: False</p>
 </dd>
 </dl>
 </section>
@@ -110,12 +114,12 @@ maintenance mode.</p>
 <h2>Set Maintenance Off<a class="headerlink" href="#set-maintenance-off" title="Permalink to this headline">¶</a></h2>
 <p><p>Unset repositories maintenance mode.</p>
 </p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">pubtools</span><span class="o">-</span><span class="n">pulp</span><span class="o">-</span><span class="n">maintenance</span><span class="o">-</span><span class="n">off</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">url</span> <span class="n">PULP_URL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">pubtools</span><span class="o">-</span><span class="n">pulp</span><span class="o">-</span><span class="n">maintenance</span><span class="o">-</span><span class="n">off</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">url</span> <span class="n">PULP_URL</span><span class="p">]</span>
                                      <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">user</span> <span class="n">PULP_USER</span><span class="p">]</span>
                                      <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">password</span> <span class="n">PULP_PASSWORD</span><span class="p">]</span>
                                      <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">insecure</span><span class="p">]</span>
                                      <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">throttle</span> <span class="n">PULP_THROTTLE</span><span class="p">]</span>
-                                     <span class="p">[</span><span class="o">--</span><span class="n">owner</span> <span class="n">OWNER</span><span class="p">]</span>
+                                     <span class="p">[</span><span class="o">--</span><span class="n">pulp</span><span class="o">-</span><span class="n">fake</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">owner</span> <span class="n">OWNER</span><span class="p">]</span>
                                      <span class="p">[</span><span class="o">--</span><span class="n">repo</span><span class="o">-</span><span class="n">url</span><span class="o">-</span><span class="n">regex</span> <span class="n">REPO_URL_REGEX</span><span class="p">]</span>
                                      <span class="p">[</span><span class="o">--</span><span class="n">repo</span><span class="o">-</span><span class="n">ids</span> <span class="n">REPO_IDS</span><span class="p">]</span>
 </pre></div>
@@ -155,7 +159,11 @@ maintenance mode.</p>
 <p>Default: False</p>
 </dd>
 <dt><kbd>--pulp-throttle</kbd></dt>
-<dd><p>Allows to enqueue or run only specified number of Pulp tasks at one moment</p>
+<dd><p>Allows to enqueue or run only specified number of Pulp tasks at one moment (or set PULP_THROTTLE environment variable)</p>
+</dd>
+<dt><kbd>--pulp-fake</kbd></dt>
+<dd><p>Use a fake in-memory Pulp client rather than interacting with a real server. For development/testing only, may have limited functionality.</p>
+<p>Default: False</p>
 </dd>
 </dl>
 </section>
@@ -201,6 +209,7 @@ from maintenance mode.</p>
 <li class="toctree-l1"><a class="reference internal" href="clear-repo.html">clear-repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="garbage-collect.html">garbage-collect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">publish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="push.html">push</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">set-maintenance</a></li>
 </ul>
 
@@ -219,7 +228,7 @@ from maintenance mode.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="publish.html" title="previous chapter">publish</a></li>
+      <li>Previous: <a href="push.html" title="previous chapter">push</a></li>
   </ul></li>
 </ul>
 </div>
@@ -249,7 +258,7 @@ from maintenance mode.</p>
       &copy;2019, Red Hat.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
